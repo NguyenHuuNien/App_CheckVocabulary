@@ -57,7 +57,7 @@ public class UI extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.FlowLayout());
 
         jPanel1.setPreferredSize(new java.awt.Dimension(990, 50));
-        jPanel1.setLayout(new java.awt.FlowLayout(1, 5, 0));
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ABC");
