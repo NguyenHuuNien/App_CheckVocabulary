@@ -1,13 +1,20 @@
-package kotoba_wo_chekku;
+package Objects_Language;
 
-public class kotoba {
+public class TiengNhat extends Language{
     private String kanji;
     private String romaji;
     private String hiragana;
     private String katakana;
-    private String vie;
-    public kotoba(){
-        
+
+    public TiengNhat() {
+    }
+
+    public TiengNhat(String kanji, String hiragana, String katakana, String romaji, String nghia) {
+        super("TiengNhat",nghia);
+        this.kanji = kanji;
+        this.romaji = romaji;
+        this.hiragana = hiragana;
+        this.katakana = katakana;
     }
 
     public String getKanji() {
@@ -42,19 +49,9 @@ public class kotoba {
         this.katakana = katakana;
     }
 
-    public String getVie() {
-        return vie;
+    @Override
+    public String toString() {
+        return "TiengNhat{" + "kanji=" + kanji + ", romaji=" + romaji + ", hiragana=" + hiragana + ", katakana=" + katakana + '}';
     }
-
-    public void setVie(String vie) {
-        this.vie = vie;
-    }
-    public boolean check(String s){
-        if(kanji.equals(s)) return true;
-        else if(romaji.equals(s)) return true;
-        else if(hiragana.equals(s)) return true;
-        else if(katakana.equals(s)) return true;
-        else if(vie.equals(s)) return true;
-        return false;
-    }
+    
 }

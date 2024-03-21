@@ -1,21 +1,25 @@
 package UI;
 
+import Objects_Language.TiengAnh;
+import Objects_Language.TiengNhat;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class UI extends javax.swing.JFrame {
-
-    /**
-     * Creates new form giaoDien
-     */
+    private List<TiengNhat> dsTiengNhat;
+    private List<TiengAnh> dsTiengAnh;
+    private boolean isTiengNhat;
     public UI() {
         initComponents();
-        jPanel7.setFocusable(true);
     }
 
     private void buttonOKEvent(){
-        System.out.println("Button OK pressed");
+        if(isTiengNhat){
+            System.out.println(dsTiengNhat.get(0).getHiragana());
+        }
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -27,6 +31,7 @@ public class UI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         nameFile = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -67,13 +72,21 @@ public class UI extends javax.swing.JFrame {
         nameFile.setText("nameOfFile");
         jPanel2.add(nameFile);
 
-        jButton1.setText("change file");
+        jButton1.setText("File Nihongo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         jPanel2.add(jButton1);
+
+        jButton8.setText("File English");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton8);
 
         getContentPane().add(jPanel2);
 
@@ -167,8 +180,9 @@ public class UI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        isTiengNhat = true;
         JFileChooser jfilechooser = new JFileChooser();
-        FileNameExtensionFilter fileChoose = new FileNameExtensionFilter("Van Ban", "docx","xlms","md");
+        FileNameExtensionFilter fileChoose = new FileNameExtensionFilter("*.csv", "csv");
         jfilechooser.setFileFilter(fileChoose);
         jfilechooser.setMultiSelectionEnabled(false);
         int x = jfilechooser.showDialog(this, "Chon file");
@@ -176,6 +190,8 @@ public class UI extends javax.swing.JFrame {
             saveLoad.saveload.path = jfilechooser.getSelectedFile();
             nameFile.setText(saveLoad.saveload.path.getName());
         }
+        dsTiengNhat = new ArrayList<>();
+        dsTiengNhat = saveLoad.saveload.Load("TiengNhat");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -183,14 +199,36 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jPanel7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel7KeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            buttonOKEvent();
-        }
+        
     }//GEN-LAST:event_jPanel7KeyPressed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        if(isTiengNhat){
+            if(dsTiengNhat == null){
+                return;
+            }
+        }else{
+            if(dsTiengAnh == null){
+                return;
+            }
+        }
         buttonOKEvent();
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        isTiengNhat = false;
+        JFileChooser jfilechooser = new JFileChooser();
+        FileNameExtensionFilter fileChoose = new FileNameExtensionFilter("*.csv", "csv");
+        jfilechooser.setFileFilter(fileChoose);
+        jfilechooser.setMultiSelectionEnabled(false);
+        int x = jfilechooser.showDialog(this, "Chon file");
+        if(x == JFileChooser.APPROVE_OPTION){
+            saveLoad.saveload.path = jfilechooser.getSelectedFile();
+            nameFile.setText(saveLoad.saveload.path.getName());
+        }
+        dsTiengAnh = new ArrayList<>();
+        dsTiengAnh = saveLoad.saveload.Load("TiengAnh");
+    }//GEN-LAST:event_jButton8ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -201,6 +239,7 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
