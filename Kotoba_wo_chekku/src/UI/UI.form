@@ -62,7 +62,7 @@
             <Property name="text" type="java.lang.String" value="Choose"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="nameFile">
           <Properties>
             <Property name="text" type="java.lang.String" value="nameOfFile"/>
           </Properties>

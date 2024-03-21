@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class saveload {
-    private static File path = new File("data.bin");
+        public static File path = new File("data.bin");
 	public static <E> void Save(List<E> obj) {
 		try {
 			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path));
