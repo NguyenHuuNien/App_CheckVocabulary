@@ -2,9 +2,9 @@ package UI;
 
 import Objects_Language.TiengAnh;
 import Objects_Language.TiengNhat;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -15,7 +15,36 @@ public class UI extends javax.swing.JFrame {
     public UI() {
         initComponents();
     }
-
+    
+    private void Atarashi_Shitsumon(){
+        if(isTiengNhat){
+            int index = new Random().nextInt(dsTiengNhat.size()-1);
+            txtCheck.setText(dsTiengNhat.get(index).getTX());
+        }else{
+            int index = new Random().nextInt(dsTiengAnh.size()-1);
+            txtCheck.setText(dsTiengAnh.get(index).getText());
+        }
+    }
+    
+    private void Nihongo_check(){
+        String s1 = txtCheck.getText();
+        String s2 = txtInput.getText();
+        if(s1.indexOf(s2)!=-1){
+            System.out.println("Maru");
+        }else{
+            System.out.println("Batsu");
+        }
+        Atarashi_Shitsumon();
+    }
+    private void Eigo_check(){
+        
+    }
+    private void Kotae_check(){
+        if(isTiengNhat) Nihongo_check();
+        else Eigo_check();
+    }
+    
+    
     private void buttonOKEvent(){
         if(isTiengNhat){
             System.out.println(dsTiengNhat.get(0).getHiragana());
@@ -42,9 +71,10 @@ public class UI extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        txtCheck = new javax.swing.JLabel();
+        jpanl = new javax.swing.JPanel();
+        lb = new javax.swing.JLabel();
+        txtInput = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
 
@@ -118,6 +148,11 @@ public class UI extends javax.swing.JFrame {
         jPanel4.add(jLabel4);
 
         jButton6.setText("change");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButton6);
 
         jLabel5.setText("to");
@@ -127,17 +162,20 @@ public class UI extends javax.swing.JFrame {
 
         jPanel5.setPreferredSize(new java.awt.Dimension(990, 50));
 
-        jLabel6.setText("voca");
-        jPanel5.add(jLabel6);
+        txtCheck.setText("voca");
+        jPanel5.add(txtCheck);
 
         getContentPane().add(jPanel5);
 
-        jPanel6.setPreferredSize(new java.awt.Dimension(990, 100));
+        jpanl.setPreferredSize(new java.awt.Dimension(990, 100));
 
-        jLabel7.setText("jLabel7");
-        jPanel6.add(jLabel7);
+        lb.setText("jLabel7");
+        jpanl.add(lb);
 
-        getContentPane().add(jPanel6);
+        txtInput.setText("jTextField1");
+        jpanl.add(txtInput);
+
+        getContentPane().add(jpanl);
 
         jPanel7.setPreferredSize(new java.awt.Dimension(990, 50));
         jPanel7.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -212,6 +250,7 @@ public class UI extends javax.swing.JFrame {
                 return;
             }
         }
+        Nihongo_check();
         buttonOKEvent();
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -230,6 +269,10 @@ public class UI extends javax.swing.JFrame {
         dsTiengAnh = saveLoad.saveload.Load("TiengAnh");
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        Atarashi_Shitsumon();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -244,15 +287,16 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jpanl;
+    private javax.swing.JLabel lb;
     private javax.swing.JLabel nameFile;
+    private javax.swing.JLabel txtCheck;
+    private javax.swing.JTextField txtInput;
     // End of variables declaration//GEN-END:variables
 }

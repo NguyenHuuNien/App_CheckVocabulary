@@ -48,7 +48,12 @@ public class TiengNhat extends Language{
     public void setKatakana(String katakana) {
         this.katakana = katakana;
     }
-
+    public String getTX(){
+        if(kanji.length()>0) return kanji;
+        else if(hiragana.length()>0) return hiragana;
+        else if(katakana.length()>0) return katakana;
+        else return super.getNghia_Vie();
+    }
     @Override
     public String toString() {
         return "TiengNhat{" + "kanji=" + kanji + ", romaji=" + romaji + ", hiragana=" + hiragana + ", katakana=" + katakana + '}';
