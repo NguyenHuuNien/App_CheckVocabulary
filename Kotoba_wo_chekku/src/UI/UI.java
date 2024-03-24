@@ -11,9 +11,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class UI extends javax.swing.JFrame {
     private List<TiengNhat> dsTiengNhat;
     private List<TiengAnh> dsTiengAnh;
+    private int index;
     private boolean isTiengNhat;
     public UI() {
         initComponents();
+        index = 0;
+        txtInput.setText("");
     }
     
     private void Atarashi_Shitsumon(){
@@ -29,6 +32,7 @@ public class UI extends javax.swing.JFrame {
     private void Nihongo_check(){
         String s1 = txtCheck.getText();
         String s2 = txtInput.getText();
+        System.out.print(s1.indexOf(s2));
         if(s1.indexOf(s2)!=-1){
             System.out.println("Maru");
         }else{
