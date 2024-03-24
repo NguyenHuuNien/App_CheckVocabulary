@@ -21,18 +21,18 @@ public class UI extends javax.swing.JFrame {
     
     private void Atarashi_Shitsumon(){
         if(isTiengNhat){
-            int index = new Random().nextInt(dsTiengNhat.size()-1);
+            index = new Random().nextInt(dsTiengNhat.size()-1);
             txtCheck.setText(dsTiengNhat.get(index).getTX());
         }else{
-            int index = new Random().nextInt(dsTiengAnh.size()-1);
+            index = new Random().nextInt(dsTiengAnh.size()-1);
             txtCheck.setText(dsTiengAnh.get(index).getText());
         }
     }
     
     private void Nihongo_check(){
-        String s1 = txtCheck.getText();
-        String s2 = txtInput.getText();
-        System.out.print(s1.indexOf(s2));
+        String s1 = dsTiengNhat.get(index).review().toLowerCase();
+        String s2 = txtInput.getText().toLowerCase();
+        System.out.println(s1.indexOf(s2) + " " + s1 + "\n" + s2);
         if(s1.indexOf(s2)!=-1){
             System.out.println("Maru");
         }else{
@@ -176,7 +176,7 @@ public class UI extends javax.swing.JFrame {
         lb.setText("jLabel7");
         jpanl.add(lb);
 
-        txtInput.setText("jTextField1");
+        txtInput.setPreferredSize(new java.awt.Dimension(200, 25));
         jpanl.add(txtInput);
 
         getContentPane().add(jpanl);

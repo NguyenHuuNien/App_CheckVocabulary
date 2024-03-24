@@ -18,9 +18,9 @@ public class TiengAnh extends Language{
     public void setText(String text) {
         this.text = text;
     }
-    @Override
-    public String toString() {
-        return "TiengAnh{" + "text=" + text + '}';
+    
+    public String review() {
+        return text + " " + super.getNghia_Vie();
     }
     
 }

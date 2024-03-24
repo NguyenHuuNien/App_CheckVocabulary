@@ -32,7 +32,7 @@ public class Language implements Serializable{
 
     @Override
     public String toString() {
-        return "Language{" + "ngonNgu=" + ngonNgu + ", nghia_Vie=" + nghia_Vie + '}';
+        return nghia_Vie;
     }
     
 }

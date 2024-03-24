@@ -54,9 +54,9 @@ public class TiengNhat extends Language{
         else if(katakana.length()>0) return katakana;
         else return super.getNghia_Vie();
     }
-    @Override
-    public String toString() {
-        return "TiengNhat{" + "kanji=" + kanji + ", romaji=" + romaji + ", hiragana=" + hiragana + ", katakana=" + katakana + '}';
+    
+    public String review() {
+        return kanji + " " + romaji + " " + hiragana + " " + katakana + " " + super.getNghia_Vie();
     }
     
 }
