@@ -32,7 +32,6 @@ public class UI extends javax.swing.JFrame {
     private void Nihongo_check(){
         String s1 = dsTiengNhat.get(index).review().toLowerCase();
         String s2 = txtInput.getText().toLowerCase();
-        System.out.println(s1.indexOf(s2) + " " + s1 + "\n" + s2);
         if(s1.indexOf(s2)!=-1){
             System.out.println("Maru");
         }else{
@@ -41,7 +40,14 @@ public class UI extends javax.swing.JFrame {
         Atarashi_Shitsumon();
     }
     private void Eigo_check(){
-        
+        String s1 = dsTiengAnh.get(index).review().toLowerCase();
+        String s2 = txtInput.getText().toLowerCase();
+        if(s1.indexOf(s2)!=-1){
+            System.out.println("Maru");
+        }else{
+            System.out.println("Batsu");
+        }
+        Atarashi_Shitsumon();
     }
     private void Kotae_check(){
         if(isTiengNhat) Nihongo_check();
