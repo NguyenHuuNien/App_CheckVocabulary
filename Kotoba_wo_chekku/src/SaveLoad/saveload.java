@@ -37,6 +37,10 @@ public class saveload {
                                 if(s==null) break;
                                 if(language.equals("TiengNhat")){
                                     String[] arr = s.split(",");
+                                    for(var o : arr){
+                                        System.out.println(o);
+                                    }
+                                    System.out.println("------------------------");
                                     TiengNhat a = new TiengNhat(arr[0],arr[1],arr[2],arr[3],arr[4]);
                                     obj.add((E)a);
                                 }else{

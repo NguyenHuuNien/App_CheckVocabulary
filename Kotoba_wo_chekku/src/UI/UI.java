@@ -11,7 +11,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class UI extends javax.swing.JFrame {
     private List<TiengNhat> dsTiengNhat;
     private List<TiengAnh> dsTiengAnh;
-    private int index;
+    private int index = 0;
     private boolean isTiengNhat;
     public UI() {
         initComponents();
@@ -20,10 +20,14 @@ public class UI extends javax.swing.JFrame {
     }
     
     private void Atarashi_Shitsumon(){
+        txtInput.setText("");
         if(isTiengNhat){
-            index = new Random().nextInt(dsTiengNhat.size()-1);
+            if(index < dsTiengNhat.size()-1) index++;
+            else index = 0;
             txtCheck.setText(dsTiengNhat.get(index).getTX());
         }else{
+            if(index < dsTiengAnh.size()-1) index++;
+            else index = 0;
             index = new Random().nextInt(dsTiengAnh.size()-1);
             txtCheck.setText(dsTiengAnh.get(index).getText());
         }
@@ -33,9 +37,9 @@ public class UI extends javax.swing.JFrame {
         String s1 = dsTiengNhat.get(index).review().toLowerCase();
         String s2 = txtInput.getText().toLowerCase();
         if(s1.indexOf(s2)!=-1){
-            System.out.println("Maru");
+            txtKetQua.setText("True");
         }else{
-            System.out.println("Batsu");
+            txtKetQua.setText("False");
         }
         Atarashi_Shitsumon();
     }
@@ -57,7 +61,6 @@ public class UI extends javax.swing.JFrame {
     
     private void buttonOKEvent(){
         if(isTiengNhat){
-            System.out.println(dsTiengNhat.get(0).getHiragana());
         }
     }
     @SuppressWarnings("unchecked")
@@ -87,6 +90,8 @@ public class UI extends javax.swing.JFrame {
         txtInput = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        txtKetQua = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chuong trinh kiem tra tu vung");
@@ -224,6 +229,11 @@ public class UI extends javax.swing.JFrame {
 
         getContentPane().add(jPanel7);
 
+        jPanel6.setPreferredSize(new java.awt.Dimension(990, 50));
+        jPanel6.add(txtKetQua);
+
+        getContentPane().add(jPanel6);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -304,11 +314,13 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jpanl;
     private javax.swing.JLabel lb;
     private javax.swing.JLabel nameFile;
     private javax.swing.JLabel txtCheck;
     private javax.swing.JTextField txtInput;
+    private javax.swing.JLabel txtKetQua;
     // End of variables declaration//GEN-END:variables
 }
